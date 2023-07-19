@@ -1,11 +1,63 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>RPG</title>
-    <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="/css/my.css" rel="stylesheet">
+    <title>Document</title>
 </head>
 <body>
-<h1>RPG admin panel</h1>
+<!-- Header -->
+<header class="header">
+    <h1>RPG admin panel</h1>
+    <h2>Account List</h2>
+</header>
+<main class="main">
+    <!-- Table -->
+    <div class="container">
+        <table id="players">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Race</th>
+                <th>Profession</th>
+                <th>Level</th>
+                <th>Birthday</th>
+                <th>Banned</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</main>
+<!-- Js -->
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            method: "GET",
+            url: "/rest/players",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                $.each(response, function (key, value) {
+                    let birthdayDate = new Date(value.birthday);
+                    let formattedBirthday = birthdayDate.toLocaleDateString("en-GB");
+                    $('#players').append("<tr>\
+										<td>" + value.id + "</td>\
+										<td>" + value.name + "</td>\
+										<td>" + value.title + "</td>\
+										<td>" + value.race + "</td>\
+										<td>" + value.profession + "</td>\
+										<td>" + value.level + "</td>\
+										<td>" + formattedBirthday + "</td>\
+										<td>" + value.banned + "</td>\
+										</tr>");
+                })
+            }
 
+        });});
+</script>
 </body>
 </html>
