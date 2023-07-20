@@ -60,7 +60,7 @@ public class PlayerController {
         return ResponseEntity.status(HttpStatus.OK).body(toPlayerInfo(player));
     }
 
-    @PostMapping("/{ID}")
+    @PutMapping("/{ID}")
     public ResponseEntity<PlayerInfo> updatePlayer(@PathVariable("ID") long id,
                                                    @RequestBody PlayerInfo info) {
         if (id <= 0) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
