@@ -4,17 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="/css/my.css" rel="stylesheet">
+    <link href="../css/my.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
 <!-- Header -->
 <header class="header">
     <h1>RPG admin panel</h1>
-    <h2>Account List</h2>
 </header>
 <main class="main">
     <!-- Table -->
+    <h2>Account List</h2>
+    <div class="tab_head_containter">
+        <div class="page_limit">
+            <span>Count per page</span>
+            <select name="" id="table_size">
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+            </select>
+        </div>
+
+    </div>
     <div class="container">
         <table id="players">
             <thead>
@@ -27,37 +53,72 @@
                 <th>Level</th>
                 <th>Birthday</th>
                 <th>Banned</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             </thead>
         </table>
     </div>
+
+    <div class="footer">
+        <span></span>
+        <div class="index_buttons"></div>
+    </div>
+
+    <div class="registration">
+        <h3>Registation form</h3>
+    <form class="form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" maxlength="12" placeholder="Name" pattern="[A-Za-z-]+"/>
+
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" maxlength="30" placeholder="Title" pattern="[A-Za-z-]+" />
+
+        <label for="race">Race</label>
+        <select name="race" id="race">
+            <option value="HUMAN">HUMAN</option>
+            <option value="DWARF">DWARF</option>
+            <option value="ELF">ELF</option>
+            <option value="GIANT">GIANT</option>
+            <option value="ORC">ORC</option>
+            <option value="TROLL">TROLL</option>
+            <option value="HOBBIT">HOBBIT</option>
+        </select>
+
+        <label for="profession">Profession</label>
+        <select name="profession" id="profession">
+            <option value="WARRIOR">WARRIOR</option>
+            <option value="ROGUE">ROGUE</option>
+            <option value="SORCERER">SORCERER</option>
+            <option value="CLERIC">CLERIC</option>
+            <option value="PALADIN">PALADIN</option>
+            <option value="NAZGUL">NAZGUL</option>
+            <option value="WARLOCK">WARLOCK</option>
+            <option value="DRUID">DRUID</option>
+        </select>
+      
+        <label for="level">Level</label>
+        <input type="level" id="level" name="level" placeholder="25" type=number min=0 max=100/>
+
+        <label for="date">Birthday</label>
+            <input type="date"
+                   id="date"
+                   max="2077-06-20"
+                   min="1920-06-05"
+                   value="2023-07-20">
+        <label for="banned">Banned</label>
+        <select name="banned" id="banned">
+            <option value="0">false</option>
+            <option value="1">true</option>
+        </select>
+        <button class="submit-button" type="button">Submit</button>
+    </form>
+    </div>
+
+
 </main>
 <!-- Js -->
-<script>
-    $(document).ready(function() {
-        $.ajax({
-            method: "GET",
-            url: "/rest/players",
-            dataType: "json",
-            success: function (response) {
-                console.log(response);
-                $.each(response, function (key, value) {
-                    let birthdayDate = new Date(value.birthday);
-                    let formattedBirthday = birthdayDate.toLocaleDateString("en-GB");
-                    $('#players').append("<tr>\
-										<td>" + value.id + "</td>\
-										<td>" + value.name + "</td>\
-										<td>" + value.title + "</td>\
-										<td>" + value.race + "</td>\
-										<td>" + value.profession + "</td>\
-										<td>" + value.level + "</td>\
-										<td>" + formattedBirthday + "</td>\
-										<td>" + value.banned + "</td>\
-										</tr>");
-                })
-            }
-
-        });});
-</script>
+<script src="../app.js"></script>
 </body>
 </html>
+
