@@ -76,7 +76,7 @@ function displayIndexOfButtons(array_length){
     $(".index_buttons button").remove()
     $(".index_buttons").append('<button onclick="prev();">Previous</button>')
 
-    for (var i=1; i<=max_index; i++) {
+    for (let i=1; i<=max_index; i++) {
         $(".index_buttons").append('<button onclick="indexPagination('+i+');" index="'+i+'">'+i+'</button>')
     }
     $(".index_buttons").append('<button onclick="next();">Next</button>');
@@ -174,24 +174,29 @@ function getUsersWithPagination(pageNumber, pageSize) {
 
 
 // Delete user
-function handleDeleteClick(id){
-  $.ajax({
-      url: '/rest/players/' + id,
-      method: 'DELETE',
-      contentType: 'application/json',
-      success: function(result) {
-          getUsersWithPagination(current_index, table_size)
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-          if (jqXHR.status === 404) {
-              alert("Player not found with ID:", id);
-          } else if (jqXHR.status === 400) {
-              alert("Invalid ID value:", id);
-          } else {
-              alert("Error deleting user:", errorThrown);
-          }
-      }
-  });
+function handleDeleteClick(id) {
+    $.ajax({
+        url: '/rest/players/' + id,
+        method: 'DELETE',
+        contentType: 'application/json',
+        success: function(result) {
+            array_length--;
+            if (current_index > Math.ceil(array_length / table_size)) {
+                current_index = Math.ceil(array_length / table_size);
+            }
+            getUsersWithPagination(current_index, table_size);
+            displayIndexOfButtons(array_length);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            if (jqXHR.status === 404) {
+                alert("Player not found with ID");
+            } else if (jqXHR.status === 400) {
+                alert("Invalid ID value");
+            } else {
+                alert("Error deleting user: " + errorThrown);
+            }
+        }
+    });
 }
 
 // Create new User

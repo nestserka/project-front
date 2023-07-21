@@ -25,7 +25,7 @@ html {
 }
 
 body {
-    width:1600px;
+    width:1480px;
     margin:0 auto;
     background-color: #5a6529;
     color:white;
@@ -145,18 +145,19 @@ h1 {
     z-index: 1;
 }
 
-#players {
+.container {
     width: 100%;
     border-collapse: collapse;
 }
 
-#players th, #players td {
+.container th, .container td {
     border: 2px solid #88e420;
     padding: 8px;
     text-align: left;
 }
 
-#players th {
+
+.container th  {
     background-color: #283618;
     color:white;
     text-align: center;
@@ -164,7 +165,7 @@ h1 {
     font-size:20px;
 }
 
-#players tr:nth-child(even) {
+.container tr:nth-child(even) {
     background-color: #283618;
 }
 
@@ -202,6 +203,10 @@ h1 {
     justify-content: center;
     margin-top:30px;
     margin-bottom:20px;
+}
+
+table {
+    width: 80%;
 }
 
 .footer{
