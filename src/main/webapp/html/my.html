@@ -4,17 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="/css/my.css" rel="stylesheet">
+    <!-- <link href="/css/my.css" rel="stylesheet"> -->
+    <link href="../css/my.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
 <!-- Header -->
 <header class="header">
     <h1>RPG admin panel</h1>
-    <h2>Account List</h2>
+    <nav class="nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#accountlist" class="nav-link">Account List</a></li>
+          <li class="nav-item"><a href="#registration" class="nav-link">Registration form</a></li>
+        </ul>
+      </nav>
 </header>
 <main class="main">
+    <section class="section" id="about">
+        <div class="text_wrapper"> 
+          <h2 class="about">S Meneg suilaid!</h2>
+          <h3>Do Not Be Afraid, Mithrandir <br> You Are Not Alone</h3>
+          <h4> &#169 J. R. R. Tolkien</h4>
+          </div>
+        </div>
+    </section>
+    <section class="section" id="accountlist">
     <h2>Account List</h2>
+    <hr>
     <div class="tab_head_containter">
         <div class="page_limit">
             <span>Count per page</span>
@@ -63,8 +80,11 @@
         <span></span>
         <div class="index_buttons"></div>
     </div>
-    <div class="registration">
+</section>
+<section class="section" id="registration">
         <h3>Registation form</h3>
+        <hr>
+        <div class="registation_form"> 
         <form class="form">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" maxlength="12" placeholder="Name" pattern="[A-Za-z-]+"/>
@@ -112,8 +132,19 @@
             <button class="submit-button" type="submit">Submit</button>
         </form>
     </div>
+</section>
 </main>
 
+<footer>
+    <ul class="contact-list">
+        <li class="footer-item-list">
+            <a href="https://github.com/nestserka">
+                <img src= "../img/github.svg" alt="github">
+              </a>
+          </li>
+        <li class="footer-item-list"><a href="#" class="footer-item-list"> &copy;2023</a></li>
+      </ul>
+</footer>
 <!-- Js -->
 <script>
 
