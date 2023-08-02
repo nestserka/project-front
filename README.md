@@ -31,6 +31,3 @@ The RPG Admin Panel provides the following functionalities:
 - Edit: Existing user details can be edited to update their information.
 - Delete: Users can be removed from the system using the admin panel.
 - Pagination: The admin panel implements pagination based on the total count of users to manage large datasets efficiently.
-
-### Acknowledgments:
-I would like to express my gratitude to JavaRush for providing the internship guidelines and task that served as the foundation for this project. Their resources and structured approach were invaluable in the development of this RPG Admin Panel.
